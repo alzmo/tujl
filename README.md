@@ -45,11 +45,18 @@ The export reads the built worker, drops scripts and private routes, and replace
 
 ## GitHub Pages
 
-Pages source: branch `main`, folder `/` (repository root).
-
-The project site is:
+Publish from branch `main`, folder `/` (repository root). The site URL is:
 
 https://alzmo.github.io/tujl/
+
+The token used to push this repository cannot change Pages settings (`POST /repos/alzmo/tujl/pages` returns 403, and Pages is not enabled yet). The owner turns it on once:
+
+1. Open https://github.com/alzmo/tujl/settings/pages
+2. Under **Build and deployment**, set **Source** to **Deploy from a branch**.
+3. Set **Branch** to `main` and the folder to `/ (root)`. Save.
+4. Wait until the Pages build is green, then open https://alzmo.github.io/tujl/ and https://alzmo.github.io/tujl/issues/001/
+
+`.nojekyll` is already in the root, so Jekyll will not hide `_next/`.
 
 `tujl.com` is not switched. This repo does not contain a `CNAME` file and does not change DNS.
 

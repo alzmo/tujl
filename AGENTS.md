@@ -11,7 +11,7 @@ Public bilingual AI briefings only. Do not migrate or recreate private memory, l
 
 ## Check GitHub Pages
 
-Pages is served from the root of `main`. After the push:
+Pages should be served from the root of `main`. If https://alzmo.github.io/tujl/ is not live, the owner still needs to set Settings → Pages → Deploy from a branch → `main` → `/ (root)`. See `README.md`. After the push:
 
 - `https://alzmo.github.io/tujl/` shows the new issue title.
 - `https://alzmo.github.io/tujl/issues/001/` still opens.
