@@ -1,6 +1,67 @@
 export type Story = { index: string; label: string; source: string; date: string; publishedAt?: string; zhTitle: string; enTitle: string; zh: string; en: string; href: string };
 export type Issue = { number: string; date: string; windowStart?: string; windowEnd?: string; readingTime: string; heading: string; noteTitle: string; noteZh: string; noteEn: string; stories: Story[] };
 
+export const issue067: Issue = {
+  "number": "067",
+  "date": "2026-11-10",
+  "readingTime": "约 4 分钟",
+  "windowStart": "2026-11-09T02:03:00Z",
+  "windowEnd": "2026-11-10T02:03:00Z",
+  "heading": "实验室与基础设施同日更新，声明仍需自行核对",
+  "noteTitle": "三条有精确时间，一则官方页面只标日期。",
+  "noteZh": "本期按北京时间11月9日10:03至11月10日10:03的24小时窗口检索，收录四则未在往期使用的一手来源。Google博客的JSON-LD datePublished为2026-11-09T13:00:00+00:00，NVIDIA博客的article:published_time为2026-11-09T14:00:01+00:00，Ollama以GitHub发布记录的published_at为准。Anthropic官方页面只标注2026年11月9日，未披露精确时刻与时区，小时级窗口归属未能确认，故未写入publishedAt，也不用SDK或其他转述时间代替。功能、性能与评测数字均来自发布方，本刊未独立运行验证。我们的编辑判断是：把公司声明、页面元数据里的时间和自己环境中的实测分开，再决定是否跟进。",
+  "noteEn": "We searched the 24-hour window from November 9, 10:03 to November 10, 10:03 Beijing time and selected four previously unused primary sources. The Google post's JSON-LD datePublished is 2026-11-09T13:00:00+00:00; the NVIDIA post's article:published_time is 2026-11-09T14:00:01+00:00; the Ollama item uses published_at from the GitHub release record. Anthropic's official page is dated November 9, 2026, with no hour or time zone, so hourly inclusion is unconfirmed: it has no publishedAt, and we did not substitute an SDK or secondary timestamp. Feature, performance and benchmark figures come from the publishers and were not independently run by TUJL. Our editorial view: keep company claims, timestamps in page metadata, and results on your own systems apart before deciding whether to follow a release.",
+  "stories": [
+    {
+      "index": "01",
+      "label": "模型发布 / Model release",
+      "source": "Anthropic",
+      "date": "2026.11.09 · 仅日期，时间/时区未披露 / date only",
+      "zhTitle": "Anthropic发布Claude Fable 5.2与Mythos 5.2，并称二者为同一底层模型",
+      "enTitle": "Anthropic releases Claude Fable 5.2 and Mythos 5.2 as one underlying model",
+      "zh": "Anthropic在官方页面发布Claude Fable 5.2与Claude Mythos 5.2，并称二者为同一底层模型。Fable带有网络安全与生物学防护，向用户开放；寻求相关有益应用的组织可通过生命科学与网络安全核验计划申请Mythos。公司称输出较5.1最多约快30%，定价为每百万输入代币8美元、输出40美元；可选快速模式最高约2.5倍、价格翻倍。开发者标识为claude-fable-5-2，并已在AWS、Google Cloud与Microsoft Azure提供。页面中的编程、科学与硬件测试结果均为公司陈述，本刊未独立验证。该页只标注2026年11月9日，未披露精确时刻。",
+      "en": "Anthropic published Claude Fable 5.2 and Claude Mythos 5.2 on its official page, describing them as the same underlying model. Fable has cybersecurity and biology safeguards and is available to users; organizations seeking beneficial applications in those areas can apply for Mythos through the Life Sciences and Cyber Verification Programs. The company says outputs are up to about 30% faster than 5.1, at $8 per million input tokens and $40 per million output tokens, with an optional fast mode up to about 2.5 times quicker at double that price. The developer ID is claude-fable-5-2, and the models are offered on AWS, Google Cloud and Microsoft Azure. Coding, science and hardware results on the page are company claims and have not been independently verified by TUJL. The page is dated November 9, 2026, with no exact time.",
+      "href": "https://www.anthropic.com/claude-fable-and-mythos-5-2"
+    },
+    {
+      "index": "02",
+      "label": "加速芯片 / Accelerators",
+      "source": "Google",
+      "date": "2026.11.09 21:00:00 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-09T13:00:00Z",
+      "zhTitle": "Google新增TPU 8tx与TPU 8i Max，第八代一年内扩至四种系统",
+      "enTitle": "Google adds TPU 8tx and TPU 8i Max, expanding the eighth generation to four systems in a year",
+      "zh": "Google Cloud高级副总裁Amin Vahdat在官方博客宣布，第八代TPU家族新增TPU 8tx与TPU 8i Max，使该代系统在一年内达到四种。8tx面向机密推理与小规模训练，称在硬件层保护使用中的敏感数据与模型权重；8i Max将两枚8i芯片封装在一起，称计算、片上SRAM与HBM带宽均为8i的两倍。性能与安全描述来自Google，本刊未做独立实测。该文JSON-LD的datePublished为2026-11-09T13:00:00+00:00。",
+      "en": "Amin Vahdat, Google Cloud SVP and chief technologist for AI and infrastructure, wrote that TPU 8tx and TPU 8i Max join the eighth-generation portfolio, bringing it to four systems in a single year. TPU 8tx is described as being built for confidential inference and small-scale training, with hardware-level protection for sensitive data and model weights in use. TPU 8i Max packages two TPU 8i chips and is said to deliver twice the compute, on-chip SRAM and HBM bandwidth of TPU 8i. Performance and security claims come from Google and have not been independently measured by TUJL. The post's JSON-LD datePublished is 2026-11-09T13:00:00+00:00.",
+      "href": "https://blog.google/innovation-and-ai/infrastructure-and-cloud/global-network/tpu-8i-max-and-8tx/"
+    },
+    {
+      "index": "03",
+      "label": "机器人模型 / Robotics model",
+      "source": "NVIDIA",
+      "date": "2026.11.09 22:00:01 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-09T14:00:01Z",
+      "zhTitle": "NVIDIA在CoRL介绍开源世界动作模型GR00T 2，并发布Isaac Lab 3.0",
+      "enTitle": "NVIDIA introduces open world-action model GR00T 2 at CoRL, with Isaac Lab 3.0",
+      "zh": "NVIDIA在机器人学习会议CoRL期间的官方博客中介绍开源世界动作模型GR00T 2（基于NVIDIA Cosmos），并同时发布Isaac Lab 3.0等仿真工具。公司称训练数据包含10万小时开放的人类第一人称视频；在其评估中，50项任务里有40项至少完成过一次且无需针对任务的示范，单次示范平均成功率为71%，五次示范为95%。上述基准与合作试用情况均为NVIDIA的说明，本刊未复现。文章的article:published_time为2026-11-09T14:00:01+00:00。",
+      "en": "In an official blog post during the Conference on Robot Learning, NVIDIA introduced GR00T 2, an open world-action model built on NVIDIA Cosmos, alongside Isaac Lab 3.0 and other simulation tools. The company says training included 100,000 hours of open-source human egocentric video. In its evaluation, 40 of 50 tasks were completed at least once without task-specific demonstrations, with average success of 71% from one demonstration per task and 95% from five. These benchmarks and partner trials are NVIDIA's account and have not been reproduced by TUJL. The post's article:published_time is 2026-11-09T14:00:01+00:00.",
+      "href": "https://blogs.nvidia.com/blog/robotics-simulation-advancements-corl/"
+    },
+    {
+      "index": "04",
+      "label": "本地推理 / Local inference",
+      "source": "Ollama · GitHub Release",
+      "date": "2026.11.10 02:21:19 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-09T18:21:19Z",
+      "zhTitle": "Ollama 0.40.16加入Ripple Preview，并称降低部分模型在Apple芯片上的内存占用",
+      "enTitle": "Ollama 0.40.16 adds Ripple Preview and reports lower memory use for a model on Apple silicon",
+      "zh": "Ollama 0.40.16为正式发布。发布说明新增Ricursive Intelligence的65B稠密模型Ripple Preview，并提供ollama run ripple-preview。维护方称，Qwen3.8 Flash Next在Apple silicon上约减少27GiB内存占用；同时调整了将Claude Code路由到所选模型的启动方式、云模型下线提示，以及/v1/responses与/v1/models的行为，并加入Windows on ARM的CUDA 13.5支持。功能与内存数字来自发布说明，本刊未实测。GitHub published_at为2026-11-09T18:21:19Z。",
+      "en": "Ollama 0.40.16 is a regular release. The notes add Ripple Preview, a 65B dense model from Ricursive Intelligence for agentic coding, via ollama run ripple-preview. Maintainers say Qwen3.8 Flash Next uses about 27 GiB less memory on Apple silicon. The release also adjusts how ollama launch routes Claude Code to the selected model, explains retired cloud models, changes /v1/responses and /v1/models behavior, and adds CUDA 13.5 support for Windows on ARM. Features and the memory figure come from the release notes and have not been measured by TUJL. GitHub published_at is 2026-11-09T18:21:19Z.",
+      "href": "https://github.com/ollama/ollama/releases/tag/v0.40.16"
+    }
+  ]
+};
+
 export const issue066: Issue = {
   "number": "066",
   "date": "2026-11-08",
