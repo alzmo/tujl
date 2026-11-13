@@ -1,6 +1,68 @@
 export type Story = { index: string; label: string; source: string; date: string; publishedAt?: string; zhTitle: string; enTitle: string; zh: string; en: string; href: string };
 export type Issue = { number: string; date: string; windowStart?: string; windowEnd?: string; readingTime: string; heading: string; noteTitle: string; noteZh: string; noteEn: string; stories: Story[] };
 
+export const issue068: Issue = {
+  "number": "068",
+  "date": "2026-11-13",
+  "readingTime": "约 5 分钟",
+  "windowStart": "2026-11-12T04:12:00Z",
+  "windowEnd": "2026-11-13T04:12:00Z",
+  "heading": "更快的日常模型、开源语音与生成库同日更新",
+  "noteTitle": "四条都有精确时间，榜单与安全数字来自发布方。",
+  "noteZh": "本期按北京时间11月12日12:12至11月13日12:12的24小时窗口检索，收录四则未在往期使用的一手来源。窗口从11月12日12:12起算，11月11日与该时刻之前的12日条目留在窗外。Google博客JSON-LD的datePublished为2026-11-12T18:00:00+00:00；Salesforce与IBM两篇Hugging Face文章的datePublished分别为2026-11-12T16:43:41.057Z与2026-11-12T19:07:35.672Z；Diffusers以GitHub发布记录的published_at为准。名次、错误率、速度与注入实验数字均来自发布方，本刊未独立复测。我们的编辑判断是：把新模型的榜单位置、预览模型的安全结论和软件库的集成说明分开，再放到自己的数据与任务上核对。",
+  "noteEn": "We searched the 24-hour window from November 12, 12:12 to November 13, 12:12 Beijing time and selected four previously unused primary sources. The window starts at 12:12 on November 12, so November 11 and earlier November 12 items stay outside it. The Google post's JSON-LD datePublished is 2026-11-12T18:00:00+00:00. The Salesforce and IBM Hugging Face posts use datePublished values of 2026-11-12T16:43:41.057Z and 2026-11-12T19:07:35.672Z. The Diffusers item uses published_at from the GitHub release record. Ranks, error rates, speed figures and injection-test numbers come from the publishers and were not independently rerun by TUJL. Our editorial view: keep a new model's leaderboard place, a preview model's safety claims, and a library's integration notes apart, then check them on your own data and tasks.",
+  "stories": [
+    {
+      "index": "01",
+      "label": "模型发布 / Model release",
+      "source": "Google",
+      "date": "2026.11.13 02:00:00 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-12T18:00:00Z",
+      "zhTitle": "Google发布Gemini 4 Hydrogen，面向日常编程与代理工作流",
+      "enTitle": "Google releases Gemini 4 Hydrogen for everyday coding and agentic workflows",
+      "zh": "Google DeepMind高级副总裁、Google首席AI架构师Koray Kavukcuoglu在官方博客介绍Gemini 4 Hydrogen，称它把速度和效率放在日常编程与代理工作流上，而Gemini 4 Carbon与Argon仍面向更长程的推理。公司称，默认的high思考档在Artificial Analysis Intelligence Index上为51，高于Argon的50，最高xhigh档为54；在全部100万token上下文内定价固定为每百万输入代币1.50美元、输出7.50美元。Google Antigravity中的Orchestrator可在同一次会话里于Carbon与Hydrogen之间切换；公司称在Terminal-Bench 4.0上成功率接近Carbon，平均少用24%配额、快19%。相对Gemini 3.8 Flash，公司称high默认档完成任务快2.5倍，Terminal-Bench 4.1为57%对18.2%。思考档分为low、medium、high（默认）与xhigh。模型正向Google AI Studio、Gemini API、Gemini应用、搜索以及符合条件的企业与订阅表面推出。上述分数与速度均为Google的陈述，本刊未复测。该文JSON-LD的datePublished为2026-11-12T18:00:00+00:00。",
+      "en": "Koray Kavukcuoglu, SVP of Google DeepMind and chief AI architect at Google, introduced Gemini 4 Hydrogen for speed and efficiency on everyday coding and agentic workflows, while Gemini 4 Carbon and Argon remain the models for longer-horizon reasoning. The company says Hydrogen scores 51 on the Artificial Analysis Intelligence Index at the default high thinking level, above Argon's 50, and 54 at xhigh. Pricing is flat across the 1 million-token context window at $1.50 per million input tokens and $7.50 per million output tokens. Orchestrator in Google Antigravity can switch between Carbon and Hydrogen in one session; Google says that on Terminal-Bench 4.0 it reached near-Carbon success while using 24% less quota and finishing 19% faster on average. Against Gemini 3.8 Flash, the company says the high default finishes tasks 2.5 times faster and scores 57% versus 18.2% on Terminal-Bench 4.1. Thinking levels are low, medium, high (default) and xhigh. Hydrogen is rolling out across Google AI Studio, the Gemini API, the Gemini app, Search, and eligible business and subscriber surfaces. These scores and speed figures are Google's claims and have not been rerun by TUJL. The post's JSON-LD datePublished is 2026-11-12T18:00:00+00:00.",
+      "href": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-hydrogen/"
+    },
+    {
+      "index": "02",
+      "label": "语音识别 / Speech recognition",
+      "source": "Salesforce · Hugging Face",
+      "date": "2026.11.13 00:43:41 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-12T16:43:41.057Z",
+      "zhTitle": "Salesforce发布Apache 2.0语音模型SOV-Transcribe-1",
+      "enTitle": "Salesforce releases the Apache 2.0 speech model SOV-Transcribe-1",
+      "zh": "Salesforce在Hugging Face博客发布开源权重模型SOV-Transcribe-1，许可为Apache 2.0，用于非流式自动语音识别，活跃参数40亿、总参数260亿。文章称，截至2026年11月12日，它在Artificial Analysis的开源非流式语音转写中排第1、总榜第7，并在VoiceCodeBench的23个系统中排第2。文中给出的AA-WER为2.28%，低于同为40亿活跃参数的NVIDIA Nemotron 3.5 Transcribe（2.81%），也低于Mistral Voxtral Small的2.77%，而活跃参数约为后者的六分之一（40亿对240亿）。这些名次与错误率来自Salesforce的记述，本刊未复测。权重在Hugging Face发布。该文JSON-LD的datePublished为2026-11-12T16:43:41.057Z。",
+      "en": "Salesforce published SOV-Transcribe-1 on the Hugging Face blog, an Apache 2.0 open-weight model for non-streaming automatic speech recognition, with 4 billion active parameters and 26 billion total. The post says that as of November 12, 2026 it ranks first among open-weight models for non-streaming speech-to-text on Artificial Analysis and seventh overall, and second of 23 systems on VoiceCodeBench. It reports an AA-WER of 2.28%, below NVIDIA Nemotron 3.5 Transcribe at 2.81% with the same active-parameter count, and below Mistral Voxtral Small at 2.77% with about six times fewer active parameters (4 billion versus 24 billion). These ranks and error rates are Salesforce's account and have not been rerun by TUJL. The weights are on Hugging Face. The post's JSON-LD datePublished is 2026-11-12T16:43:41.057Z.",
+      "href": "https://huggingface.co/blog/salesforce-sovereign-intelligence/sov-transcribe-1"
+    },
+    {
+      "index": "03",
+      "label": "结构化上下文 / Structured context",
+      "source": "IBM · Hugging Face",
+      "date": "2026.11.13 03:07:35 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-12T19:07:35.672Z",
+      "zhTitle": "IBM以实验预览发布LLMON，并给出Granite 4.1的3B与8B模型",
+      "enTitle": "IBM previews LLMON with Granite 4.1 3B and 8B models",
+      "zh": "IBM Granite团队在Hugging Face发布实验性预览模型granite-4.1-3b-LLMON-preview与granite-4.1-8b-LLMON-preview，以及标记语言LLMON（LLM Object Notation）。模型从Granite 4.1基座继续训练，用保留的特殊token划分指令、数据与约束，而不是把结构交给JSON里的括号和引号。作者称，在以稳健性（1减去攻击成功率）衡量的OPI基准上，LLMON几乎消除这类静态间接提示注入，相对其测过的最好前沿模型多避开47%的攻击，相对最好的开源模型多避开95%，并称通用能力与Granite 4.1 Instruct相当。他们同时写明这是习得行为，不是强制保证，多轮自适应攻击仍在改进，且预览不用于生产。上述比例来自作者评测，本刊未复现。该文JSON-LD的datePublished为2026-11-12T19:07:35.672Z。",
+      "en": "The IBM Granite team released two experimental preview models on Hugging Face, granite-4.1-3b-LLMON-preview and granite-4.1-8b-LLMON-preview, plus LLMON (LLM Object Notation). The models continue from Granite 4.1 base checkpoints and use reserved special tokens to separate instructions, data and requirements, rather than leaving structure to JSON brackets and quotes. The authors say that on the OPI benchmark, where robustness is 1 minus attack success rate, LLMON nearly removes this class of static indirect prompt injection, avoiding 47% more attacks than the best frontier model they tested and 95% more than the best open-source model, with general capability on par with Granite 4.1 Instruct. They also say this is learned behavior, not an enforced guarantee, that adaptive multi-turn attacks are still being improved, and that the preview is not for production. Those rates are the authors' evaluation and have not been reproduced by TUJL. The post's JSON-LD datePublished is 2026-11-12T19:07:35.672Z.",
+      "href": "https://huggingface.co/blog/ibm-granite/llmon-an-llm-native-markup-language-now-in-granite"
+    },
+    {
+      "index": "04",
+      "label": "生成库 / Generation library",
+      "source": "Diffusers · GitHub Release",
+      "date": "2026.11.12 13:22:22 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-12T05:22:22Z",
+      "zhTitle": "Diffusers 0.43.0加入五项图像与视频管线",
+      "enTitle": "Diffusers 0.43.0 adds five image and video pipelines",
+      "zh": "Hugging Face Diffusers 0.43.0为正式发布。发布说明新增五项模块化集成：MiniMax-H3-Image做文生图与参考图编辑，采样固定六步；Pika H3 Flex在其基础上用六步生成带立体声的视频；Pruna的P-H3-Image做文生图，并支持最多八张输入图的指令编辑；Kandinsky S2V 1.0由参考图像与一段语音驱动人物动作，按五秒一段生成视频；PAN 2是发布说明中的290亿参数场景模拟器，提供文生视频与图生视频。同版还调整注意力后端、张量并行、LoRA与检查点保存。功能范围来自发布说明，本刊未运行这些管线。GitHub published_at为2026-11-12T05:22:22Z。",
+      "en": "Hugging Face Diffusers 0.43.0 is a regular release. The notes add five modular integrations: MiniMax-H3-Image for text-to-image generation and reference-image editing with a fixed six-step sampler; Pika H3 Flex for video with synchronized stereo audio in six steps; Pruna's P-H3-Image for text-to-image and instruction editing with up to eight input images; Kandinsky S2V 1.0, which animates a person from a reference image and a speech recording in five-second chunks; and PAN 2, described in the notes as a 29-billion-parameter scene simulator for text-to-video and image-to-video. The release also changes attention backends, tensor parallelism, LoRA handling and checkpoint saving. This scope comes from the release notes, and TUJL has not run the pipelines. GitHub published_at is 2026-11-12T05:22:22Z.",
+      "href": "https://github.com/huggingface/diffusers/releases/tag/v0.43.0"
+    }
+  ]
+};
+
 export const issue067: Issue = {
   "number": "067",
   "date": "2026-11-10",

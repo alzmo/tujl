@@ -2,7 +2,7 @@
 
 Bilingual daily AI briefings. Tech Updates, Just Latest.
 
-The public site is a static digest. Issue **067 · 2026-11-10** is the homepage. Issues **001–066** are the archive under `issues/`. Private memory, login, and the database from the previous host are intentionally not part of this repository and are not published.
+The public site is a static digest. Issue **068 · 2026-11-13** is the homepage. Issues **001–067** are the archive under `issues/`. Private memory, login, and the database from the previous host are intentionally not part of this repository and are not published.
 
 This repository is the GitHub Pages site. `index.html` is at the repository root, so Pages should be built from the root of `main` (not `/docs`). `.nojekyll` is present so `_next/` is published as-is.
 
