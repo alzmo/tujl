@@ -2,12 +2,12 @@ import Link from "next/link";
 import type { Issue } from "./issues";
 
 export function IssuePage({ issue }: { issue: Issue }) {
-  const isLatest = issue.number === "068";
+  const isLatest = issue.number === "069";
   return (
     <main className="site-shell">
       <header className="topbar">
         <Link className="wordmark" href="/"><span>TUJL</span><small>TECH UPDATES, JUST LATEST</small></Link>
-        <nav aria-label="主导航"><a href={isLatest ? "#briefing" : "/"}>{isLatest ? "今日简报" : "返回今日"}</a>{["067", "066", "065", "064", "063", "062", "061", "060", "059", "058", "057", "056", "055", "054", "053", "052", "051", "050", "049", "048", "047", "046", "045", "044", "043", "042", "041", "040", "039", "038", "037", "036", "035", "034", "033", "032", "031", "030", "029", "028", "027", "026", "025", "024", "023", "022", "021", "020", "019", "018", "017", "016", "015", "014", "013", "012", "011", "010", "009", "008", "007", "006", "005", "004", "003", "002", "001"].map((number) => <a key={number} href={`/issues/${number}`} aria-label={`第 ${number} 期 / Issue ${number}`}>{number}</a>)}<a href="https://rujf.ai">RUJF.AI</a></nav>
+        <nav aria-label="主导航"><a href={isLatest ? "#briefing" : "/"}>{isLatest ? "今日简报" : "返回今日"}</a>{["068", "067", "066", "065", "064", "063", "062", "061", "060", "059", "058", "057", "056", "055", "054", "053", "052", "051", "050", "049", "048", "047", "046", "045", "044", "043", "042", "041", "040", "039", "038", "037", "036", "035", "034", "033", "032", "031", "030", "029", "028", "027", "026", "025", "024", "023", "022", "021", "020", "019", "018", "017", "016", "015", "014", "013", "012", "011", "010", "009", "008", "007", "006", "005", "004", "003", "002", "001"].map((number) => <a key={number} href={`/issues/${number}`} aria-label={`第 ${number} 期 / Issue ${number}`}>{number}</a>)}<a href="https://rujf.ai">RUJF.AI</a></nav>
       </header>
       <section className="news-hero">
         <div><p className="eyebrow">DAILY AI BRIEFING · 每日 AI 简报</p><h1>让变化经过筛选，<br /><em>再抵达你。</em></h1></div>

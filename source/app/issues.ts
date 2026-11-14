@@ -1,6 +1,68 @@
 export type Story = { index: string; label: string; source: string; date: string; publishedAt?: string; zhTitle: string; enTitle: string; zh: string; en: string; href: string };
 export type Issue = { number: string; date: string; windowStart?: string; windowEnd?: string; readingTime: string; heading: string; noteTitle: string; noteZh: string; noteEn: string; stories: Story[] };
 
+export const issue069: Issue = {
+  "number": "069",
+  "date": "2026-11-14",
+  "readingTime": "约 5 分钟",
+  "windowStart": "2026-11-13T04:12:00Z",
+  "windowEnd": "2026-11-14T01:55:00Z",
+  "heading": "本地推理进入 1.0，模型接入、评测与额度同日更新",
+  "noteTitle": "四条都有精确时间，速度与比例来自发布方。",
+  "noteZh": "本期从上一期窗口结束的北京时间11月13日12:12检索到截稿的北京时间11月14日09:55。这一段短于24小时：068期已经覆盖到13日12:12，本期在14日上午截稿，因此不把该时刻及之前的条目再收进来，也不把09:55之后的条目算进窗口。llama.cpp与Transformers以GitHub发布记录的published_at为准；XYBench与Google博客以JSON-LD的datePublished为准，分别为2026-11-13T17:02:35.607Z与2026-11-13T20:30:00+00:00。功能范围、速度倍数与评测比例均来自发布方，本刊未独立复测。我们的编辑判断是：把运行时的版本边界、模型库的接入范围、基准里的比例和额度领取流程分开，再放到自己的任务与账单上核对。",
+  "noteEn": "We searched from the close of the previous window, November 13 at 12:12 Beijing time, through this edition's cutoff at 09:55 on November 14. The span is shorter than 24 hours: issue 068 already covered through 12:12 on November 13, and this edition closed on the morning of November 14, so items at or before that earlier moment stay out, as do items after 09:55. The llama.cpp and Transformers items use published_at from the GitHub release records. The XYBench and Google posts use JSON-LD datePublished values of 2026-11-13T17:02:35.607Z and 2026-11-13T20:30:00+00:00. Feature scope, speed multiples and evaluation rates come from the publishers and were not independently rerun by TUJL. Our editorial view: keep a runtime's version boundary, a library's model coverage, a benchmark's rates, and a credit-claim workflow apart, then check them against your own tasks and bill.",
+  "stories": [
+    {
+      "index": "01",
+      "label": "本地推理 / Local inference",
+      "source": "llama.cpp · GitHub Release",
+      "date": "2026.11.13 18:20:19 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-13T10:20:19Z",
+      "zhTitle": "llama.cpp 与 ggml 发布 v1.0.0，并移除已弃用的公共 API",
+      "enTitle": "llama.cpp and ggml release v1.0.0 and remove the deprecated public API",
+      "zh": "ggml-org 发布 llama.cpp v1.0.0。发布说明写明，此版移除已弃用的公共 API，把 NextN 推测解码接口提升进 llama.h，并删除 llama_set_warmup、35 个已弃用函数以及 defrag_thold。同版加入 OCP FP8 KV 缓存（-ctk/-ctv f8_e4m3）、可配置 CPU 份额的主机内存 MoE 专家缓存，以及从外部 GGUF 分片加载 PLE。新增文本架构包括 Kimi-K3.1-Pro、Ripple-65B-Preview 与 xing4_0，并加入 drama-3 TTS，以及 MageVL-Cowork 与 Kimi-K3.1 视觉。llama-server 加固了 SSRF、CORS、DNS 重绑定与 MCP 工具取消，并增加 OpenAI 兼容的 /v1/audio/speech 端点；网页界面加入聊天分组与 markdown 编辑器。捆绑的 ggml 升至 v1.0.0，预编译包指向 nightly build b12359。维护者 Daniel Bevenius、Georgi Gerganov 与 merve 在同日博客中写明，此后 llama.cpp 与 ggml 会用主版本号标出 API 与 ABI 不兼容。功能范围来自发布说明与该博客，本刊未编译或实测。GitHub published_at 为 2026-11-13T10:20:19Z。",
+      "en": "ggml-org released llama.cpp v1.0.0. The notes say this version removes the deprecated public API, promotes the NextN speculative API into llama.h, and deletes llama_set_warmup, 35 deprecated functions, and defrag_thold. It adds OCP FP8 KV caches (-ctk/-ctv f8_e4m3), a host-memory MoE expert cache with a configurable CPU share, and loading of PLE from external GGUF shards. New text architectures are Kimi-K3.1-Pro, Ripple-65B-Preview and xing4_0, along with drama-3 TTS and MageVL-Cowork and Kimi-K3.1 vision. llama-server hardens SSRF, CORS, DNS rebinding and MCP tool cancellation, and adds an OpenAI-compatible /v1/audio/speech endpoint; the web UI adds chat groups and a markdown editor. Bundled ggml moves to v1.0.0, and the prebuilt package points at nightly build b12359. Maintainers Daniel Bevenius, Georgi Gerganov and merve wrote the same day that llama.cpp and ggml will now mark API and ABI incompatibilities with major-version bumps. This scope comes from the release notes and that post, and TUJL has not built or measured it. GitHub published_at is 2026-11-13T10:20:19Z.",
+      "href": "https://github.com/ggml-org/llama.cpp/releases/tag/v1.0.0"
+    },
+    {
+      "index": "02",
+      "label": "模型库 / Model library",
+      "source": "Transformers · GitHub Release",
+      "date": "2026.11.13 22:10:57 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-13T14:10:57Z",
+      "zhTitle": "Transformers 5.23.0 接入 Inkling 2、LFM3 与 Dots 3 Note 等模型",
+      "enTitle": "Transformers 5.23.0 adds Inkling 2, LFM3, Dots 3 Note and other models",
+      "zh": "Hugging Face Transformers v5.23.0 为正式发布。发布说明新增的模型包括：Thinking Machines 的 Inkling 2 Small，接受文本与图像、输出文本，语言骨干为 48 层混合专家，每层把 token 路由到 384 个专家中的 8 个，总参数 5940 亿、活跃 170 亿；Liquid AI 的 LFM3，把门控短卷积与分组查询注意力组合；Dots 3 Note Preview，以共享视觉编码器处理图像和视频，并以 Whisper 式音频编码器处理音频，支持 BF16 与 FP8；LFM3-VL，按原分辨率接收图像和视频；IQuest-Coder-V1 的 7B、14B 与 40B，架构与 Llama 相同，循环版检查点不受支持；上海人工智能实验室的 InternLM3 8B 指令模型，同样走 Llama 实现。决策头 JEV 被标为实验性，说明写明接口仍可能变化，生产环境应谨慎。破坏性变更包括移除 ep_router 专家并行方式。关于导出，说明称在 EmbeddingGemma2（8×128 token）上，带 TensorRT 执行提供者的 ONNX Runtime 比 eager PyTorch 快 7.6 倍，该数字来自发布说明，本刊未复测。GitHub published_at 为 2026-11-13T14:10:57Z。",
+      "en": "Hugging Face Transformers v5.23.0 is a regular release. Newly added models in the notes include Thinking Machines' Inkling 2 Small, which takes text and images and emits text, with a 48-layer mixture-of-experts language backbone that routes each token to 8 of 384 experts, for 594 billion total and 17 billion active parameters; Liquid AI's LFM3, which combines gated short convolutions with grouped-query attention; Dots 3 Note Preview, which uses a shared vision encoder for images and video and a Whisper-style audio encoder, with BF16 and FP8 inference; LFM3-VL, which takes images and video at native resolution; IQuest-Coder-V1 at 7B, 14B and 40B, loaded through the Llama architecture, with looped checkpoints unsupported; and Shanghai AI Laboratory's InternLM3 8B instruct model, also on the Llama implementation. The JEV decision head is marked experimental, and the notes say its API may still change and should be used with caution in production. Breaking changes include removing the ep_router expert-parallel style. On export, the notes say ONNX Runtime with the TensorRT execution provider is 7.6 times faster than eager PyTorch on EmbeddingGemma2 at 8 by 128 tokens. That figure comes from the release notes and was not rerun by TUJL. GitHub published_at is 2026-11-13T14:10:57Z.",
+      "href": "https://github.com/huggingface/transformers/releases/tag/v5.23.0"
+    },
+    {
+      "index": "03",
+      "label": "评测基准 / Benchmark",
+      "source": "Ai2 · Hugging Face",
+      "date": "2026.11.14 01:02:35 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-13T17:02:35.607Z",
+      "zhTitle": "Ai2 发布 XYBench，测试模型会否纠正基于误解的提问",
+      "enTitle": "Ai2 releases XYBench to test whether models correct misconception-based questions",
+      "zh": "Allen Institute for AI 在 Hugging Face 发布 XYBench，作者署名为 Kyle Wiggers，并写明与卡内基梅隆、NVIDIA 和约翰斯·霍普金斯的研究者共同开发。基准共 8,115 题：Stack Overflow 1,557 题、Stack Exchange 184 题、人工整理 102 题，以及用 Sonnet 4.5 从 WikiHow 指南生成的 6,272 题。它考察模型面对所谓 XY 问题——用户想完成 X，却就一个未必合适的做法 Y 求助——时，是否识别误解并把回答转向实际目标。文中称该基准获得 EMNLP 2026 最佳资源论文奖。受测模型为 Claude Sonnet 4.6、GPT-5、Gemini 3.1 Pro、Qwen3.5-9B 与 DeepSeek-V4 Pro，单轮、每题一次回答。在 Stack Overflow 上，针对字面请求的解法出现在 75–86% 的回答中，针对底层目标的解法出现在 59–71%；主要聚焦底层目标的回答只有 35–41%。在告知真实意图的实验里，Sonnet 4.6 给出底层目标解法的比例从 59% 升到 67%，但误解识别率从 47% 降到 34%。作者写明目前主要覆盖英语程序性问题。上述比例来自该文，本刊未复跑。JSON-LD 的 datePublished 为 2026-11-13T17:02:35.607Z。",
+      "en": "The Allen Institute for AI published XYBench on Hugging Face. The byline is Kyle Wiggers, and the post says it was developed with researchers at Carnegie Mellon, NVIDIA and Johns Hopkins. The benchmark has 8,115 questions: 1,557 from Stack Overflow, 184 from Stack Exchange, 102 curated by hand, and 6,272 generated with Sonnet 4.5 from WikiHow guides. It tests the XY problem, where someone wants to accomplish X but asks for help with an approach Y that may not fit, and whether a model recognizes the misconception and redirects toward the actual goal. The post says the benchmark won the Best Resource Paper Award at EMNLP 2026. The models tested were Claude Sonnet 4.6, GPT-5, Gemini 3.1 Pro, Qwen3.5-9B and DeepSeek-V4 Pro, in a single turn with one response per question. On Stack Overflow, solutions to the stated request appeared in 75–86% of responses and solutions to the underlying goal in 59–71%; only 35–41% of responses focused primarily on the underlying goal. When the true intent was supplied, Sonnet 4.6's rate of including a goal solution rose from 59% to 67%, while misconception identification fell from 47% to 34%. The authors say coverage is mainly English-language procedural problems. These rates come from the post and were not rerun by TUJL. The JSON-LD datePublished is 2026-11-13T17:02:35.607Z.",
+      "href": "https://huggingface.co/blog/allenai/xybench"
+    },
+    {
+      "index": "04",
+      "label": "开发者工具 / Developer tools",
+      "source": "Google",
+      "date": "2026.11.14 04:30:00 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-13T20:30:00Z",
+      "zhTitle": "Google 把开发者计划的云额度领取放进 AI Studio",
+      "enTitle": "Google puts Developer Program Cloud credit claims inside AI Studio",
+      "zh": "Google 产品经理 Bala Muthukrishnan 与 Seth Odoom 在官方博客写道，Google Developer Program 的 Cloud 额度现在可以在 Google AI Studio 内领取和管理。Google AI Pro 与 Ultra 订阅者可以建立开发者计划资料、关联账单并查看余额，而不必离开工作区。文章说明：每笔月度额度自发放起 12 个月内有效，未用额度按月累积；订阅配额用完后可用额度继续调用付费档模型，升级方案会提高月度额度。使用带 Cloud 账单的 Gemini API 来抵扣促销额度，需要至少 5 美元的预付余额。额度只给主订阅人，不能在家庭成员之间分享。文章没有给出各档具体的月度金额，只说额度随方案档位变化。流程描述来自该文，本刊未在账号中复现。JSON-LD 的 datePublished 为 2026-11-13T20:30:00+00:00。",
+      "en": "Google product managers Bala Muthukrishnan and Seth Odoom wrote that Google Developer Program Cloud credits can now be claimed and managed inside Google AI Studio. Google AI Pro and Ultra subscribers can create a Developer Program profile, link billing and see their balance without leaving the workspace. The post says each monthly credit is valid for 12 months from issue and unused grants stack month to month; credits can cover paid-tier models after the subscription quota runs out, and upgrading the plan increases the monthly grant. Drawing down promotional credits on the Gemini API with Cloud billing requires a minimum $5 prepaid balance. Only the primary subscriber can use the credits, and they cannot be shared with family members. The post does not state a dollar amount per tier, only that the grant scales with the plan. This workflow is the post's account and was not reproduced by TUJL in an account. The JSON-LD datePublished is 2026-11-13T20:30:00+00:00.",
+      "href": "https://blog.google/innovation-and-ai/technology/developers-tools/google-cloud-credits-gdp-ai-studio/"
+    }
+  ]
+};
+
 export const issue068: Issue = {
   "number": "068",
   "date": "2026-11-13",
