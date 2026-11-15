@@ -1,6 +1,68 @@
 export type Story = { index: string; label: string; source: string; date: string; publishedAt?: string; zhTitle: string; enTitle: string; zh: string; en: string; href: string };
 export type Issue = { number: string; date: string; windowStart?: string; windowEnd?: string; readingTime: string; heading: string; noteTitle: string; noteZh: string; noteEn: string; stories: Story[] };
 
+export const issue070: Issue = {
+  "number": "070",
+  "date": "2026-11-15",
+  "readingTime": "约 5 分钟",
+  "windowStart": "2026-11-14T01:55:00Z",
+  "windowEnd": "2026-11-15T01:55:00Z",
+  "heading": "浏览器代理写入判分，夜间构建与长期支持分支同日更新",
+  "noteTitle": "四条都以 GitHub published_at 计时，比例来自发布说明。",
+  "noteZh": "本期按北京时间11月14日09:55至11月15日09:55的24小时窗口检索，收录四则未在往期使用、且能核对精确发布时间的开源项目更新。069期已经覆盖到14日09:55，该时刻及之前的条目留在窗外，15日09:55之后的条目也不计入。browser-use、Qwen Code、llama.cpp 与 LiteLLM 均以 GitHub 发布记录的 published_at 为准，分别为 2026-11-14T08:24:22Z、2026-11-14T11:31:46Z、2026-11-14T18:48:53Z 与 2026-11-14T22:00:02Z。其中 browser-use 1.0.5 与 LiteLLM 1.108.9 为正式发布，Qwen Code 夜间标签与 llama.cpp b12385 为预发布。判分比例、困惑度与功能范围均来自发布说明，本刊未独立复测。我们的编辑判断是：把一次运行的判分字段、夜间构建里的行为变更、推理缺陷的修复说明和长期支持分支上的回迁分开，再放到自己的任务上核对。",
+  "noteEn": "We searched the 24-hour window from November 14, 09:55 to November 15, 09:55 Beijing time and selected four previously unused open-source updates with verifiable publication timestamps. Issue 069 already covered through 09:55 on November 14, so items at or before that moment stay outside this window, as do items after 09:55 on November 15. The browser-use, Qwen Code, llama.cpp and LiteLLM items use published_at from the GitHub release records: 2026-11-14T08:24:22Z, 2026-11-14T11:31:46Z, 2026-11-14T18:48:53Z and 2026-11-14T22:00:02Z. browser-use 1.0.5 and LiteLLM 1.108.9 are regular releases; the Qwen Code nightly tag and llama.cpp b12385 are pre-releases. Judgement rates, perplexity and feature scope come from the release notes and were not independently rerun by TUJL. Our editorial view: keep a run's judgement fields, behavior changes in a nightly build, a runtime bugfix description, and backports on a long-term branch apart, then check them on your own tasks.",
+  "stories": [
+    {
+      "index": "01",
+      "label": "浏览器代理 / Browser agent",
+      "source": "browser-use · GitHub Release",
+      "date": "2026.11.14 16:24:22 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-14T08:24:22Z",
+      "zhTitle": "browser-use 1.0.5 让同一次运行由用户自己的模型判分",
+      "enTitle": "browser-use 1.0.5 has the user's own model judge each run",
+      "zh": "browser-use 1.0.5 为正式发布。发布说明写明，每次运行结束后会再用用户自己的模型发一次低消耗请求，对照任务填写 result.judgement，字段包括 success、failure_reason、description、prompt_injection_detected、bot_block_or_captcha_detected 与 gotchas。judge_context= 用来传入判分标准，judge=False 可关闭；0.x 的 use_judge 与 ground_truth 重新可用。判分会看到运行轨迹、最后的截图和最终页面，除非 use_vision=False。站点拒绝输入、报错、拦截或限速时，即使运行被判成功也会写下 gotchas，例如表单要求电话号码使用 (###) ###-####。说明给出 13 次真实运行、每次判 3 遍的结果：站点有抵触的 15 次判分里都写了 gotchas（此前为 15 次中的 6 次），干净运行的 24 次判分里有 2 次写了 gotchas，成功与否的判定没有变化。这些比例来自发布说明，本刊未复跑。GitHub published_at 为 2026-11-14T08:24:22Z。",
+      "en": "browser-use 1.0.5 is a regular release. The notes say each run adds one low-effort request to the user's own model, which checks the run against the task and fills result.judgement with success, failure_reason, description, prompt_injection_detected, bot_block_or_captcha_detected and gotchas. judge_context= supplies the criteria and judge=False turns judging off; the 0.x use_judge and ground_truth options work again. The judge sees the trace, the run's last screenshots and the final page, unless use_vision=False. It writes gotchas when the site rejected input, errored, blocked or rate-limited the agent, including on a run judged successful, for example when a form requires phone numbers in (###) ###-#### format. The notes report 13 real runs, each judged 3 times: gotchas appeared on 15 of 15 verdicts where the site pushed back (6 of 15 before) and on 2 of 24 clean runs, with success verdicts unchanged. These rates come from the release notes and were not rerun by TUJL. GitHub published_at is 2026-11-14T08:24:22Z.",
+      "href": "https://github.com/browser-use/browser-use/releases/tag/1.0.5"
+    },
+    {
+      "index": "02",
+      "label": "编程代理 / Coding agent",
+      "source": "Qwen Code · GitHub Release",
+      "date": "2026.11.14 19:31:46 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-14T11:31:46Z",
+      "zhTitle": "Qwen Code 夜间版更新托管会话、飞书投递与代理循环",
+      "enTitle": "A Qwen Code nightly updates managed sessions, Feishu delivery and the agent loop",
+      "zh": "Qwen Code 发布预发布标签 v0.27.2-nightly.20261113.6f754be654。发布说明中的变更包括：托管代理可把客户端文件系统登记进托管会话；长的频道回复按有序的多段投递来安排；飞书自定义机器人增加 webhook 投递；AUTO 分类器改为判断用户授权，并避免对 HTTP URL 做 UNC 查找；AgentCore 与 OpenTUI 的每一轮都放进一次 runAgentLoop 调用；快速分类器超时改由会话模型复核；并恢复原生的 Anthropic 未签名思考历史。同版依赖修复的说明写明涉及 MCP、DOMPurify 与压缩请求解析，以及 qs、URI 与 Hono，本刊未核对通告编号。功能范围来自该夜间构建的发布说明，本刊未安装运行。GitHub published_at 为 2026-11-14T11:31:46Z。",
+      "en": "Qwen Code published the pre-release tag v0.27.2-nightly.20261113.6f754be654. Changes named in the notes include registering client filesystems into managed-agent sessions, planning long channel replies as ordered multi-segment deliveries, and adding Feishu custom-bot webhook delivery. The AUTO classifier now judges user authorization and avoids UNC lookups for HTTP URLs. Each AgentCore round and each OpenTUI round runs in one runAgentLoop call. Fast-classifier timeouts are reviewed with the session model, and native Anthropic unsigned thinking history can be recovered. Dependency fixes in the notes name MCP, DOMPurify and compressed-request parsing, plus qs, URI and Hono; TUJL did not check advisory identifiers. This scope comes from the nightly release notes, and TUJL has not installed the build. GitHub published_at is 2026-11-14T11:31:46Z.",
+      "href": "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.2-nightly.20261113.6f754be654"
+    },
+    {
+      "index": "03",
+      "label": "本地推理 / Local inference",
+      "source": "llama.cpp · GitHub Release",
+      "date": "2026.11.15 02:48:53 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-14T18:48:53Z",
+      "zhTitle": "llama.cpp 预发布 b12385 补上 Qwen2-VL 的 NVFP4 前馈缩放",
+      "enTitle": "llama.cpp pre-release b12385 applies Qwen2-VL NVFP4 feed-forward scales",
+      "zh": "ggml-org 发布 llama.cpp 预发布构建 b12385，位于 v1.0.0 之后。发布说明写明，qwen2vl 计算图此前把 ffn_up、ffn_gate 与 ffn_down 的缩放传成 NULL，因此通用流程装入的逐张量 NVFP4 缩放从未生效，模型输出为垃圾：CUDA 上困惑度约为 1e6，CPU 上为 NaN。此构建把这些缩放传给 build_ffn，与 qwen2 的做法一致，并写明修复问题 #32101。上述困惑度与 NaN 来自发布说明对缺陷的描述，本刊未复测。GitHub published_at 为 2026-11-14T18:48:53Z。",
+      "en": "ggml-org published llama.cpp pre-release build b12385, after v1.0.0. The notes say the qwen2vl graph passed NULL for the ffn_up, ffn_gate and ffn_down scales, so the per-tensor NVFP4 scales loaded by the generic pass were never applied and the model produced garbage: perplexity of about 1e6 on CUDA and NaN on CPU. This build passes those scales to build_ffn, as qwen2 does, and says it fixes issue #32101. The perplexity and NaN figures are the notes' description of the bug and were not rerun by TUJL. GitHub published_at is 2026-11-14T18:48:53Z.",
+      "href": "https://github.com/ggml-org/llama.cpp/releases/tag/b12385"
+    },
+    {
+      "index": "04",
+      "label": "模型网关 / Model gateway",
+      "source": "LiteLLM · GitHub Release",
+      "date": "2026.11.15 06:00:02 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-14T22:00:02Z",
+      "zhTitle": "LiteLLM 1.108.9 把推理、媒体与决策模型补丁回迁到长期支持分支",
+      "enTitle": "LiteLLM 1.108.9 backports reasoning, media and decision-model fixes onto the long-term branch",
+      "zh": "LiteLLM v1.108.9 为 1.108 长期支持线上的正式发布。发布说明写明，此版 Docker 镜像使用 commit e82a3c6 引入的密钥做 cosign 签名，并给出按该提交与按标签两种校验方式。回迁到 lts/1.108.x 的变更包括：在 Responses 路径上保留混合的推理与回答；Bedrock Converse 接受 s3:// 媒体来源；向 Foundry 上的 Kimi K3 发送 reasoning_effort 并保留其 reasoning_content；Vertex 请求带上调用方身份标签；聊天到 Responses 的桥接保留 cache_control 断点；Foundry 项目与资源使用 /openai/v1 Responses 基址；接入 Vercel AI Gateway 的决策模型；以及把 OpenAI 向量库搜索过滤映射到 Bedrock。功能范围来自发布说明，本刊未在网关中复现。GitHub published_at 为 2026-11-14T22:00:02Z。",
+      "en": "LiteLLM v1.108.9 is a regular release on the 1.108 long-term line. The notes say this Docker image is signed with cosign using the key introduced in commit e82a3c6, and they show verification against that commit and against the tag. Changes backported to lts/1.108.x include preserving mixed reasoning and answers on the Responses path, accepting s3:// media sources in Bedrock Converse, sending reasoning_effort to Foundry Kimi K3 and keeping its reasoning_content, attaching caller-identity labels on Vertex requests, keeping cache_control breakpoints on the chat-to-Responses bridge, using Foundry project and resource /openai/v1 Responses bases, adding Vercel AI Gateway decision models, and mapping OpenAI vector-store search filters to Bedrock. This scope comes from the release notes and was not reproduced by TUJL in a gateway. GitHub published_at is 2026-11-14T22:00:02Z.",
+      "href": "https://github.com/BerriAI/litellm/releases/tag/v1.108.9"
+    }
+  ]
+};
+
 export const issue069: Issue = {
   "number": "069",
   "date": "2026-11-14",
