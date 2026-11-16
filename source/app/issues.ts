@@ -1,6 +1,68 @@
 export type Story = { index: string; label: string; source: string; date: string; publishedAt?: string; zhTitle: string; enTitle: string; zh: string; en: string; href: string };
 export type Issue = { number: string; date: string; windowStart?: string; windowEnd?: string; readingTime: string; heading: string; noteTitle: string; noteZh: string; noteEn: string; stories: Story[] };
 
+export const issue071: Issue = {
+  "number": "071",
+  "date": "2026-11-16",
+  "readingTime": "约 5 分钟",
+  "windowStart": "2026-11-15T01:55:00Z",
+  "windowEnd": "2026-11-16T01:55:00Z",
+  "heading": "编程代理正式发布，Inkling 2、网关路由与默认模型费用同日更新",
+  "noteTitle": "四条都以 GitHub published_at 计时，数字来自发布说明。",
+  "noteZh": "本期按北京时间11月15日09:55至11月16日09:55的24小时窗口检索，收录四则未在往期使用、且能核对精确发布时间的开源项目更新。070期已经覆盖到15日09:55，该时刻及之前的条目留在窗外，16日09:55之后的条目也不计入。Qwen Code、llama.cpp、langchain-mistralai 与 browser-use 均以 GitHub 发布记录的 published_at 为准，分别为 2026-11-15T07:04:40Z、2026-11-15T09:27:48Z、2026-11-15T22:38:03Z 与 2026-11-16T00:51:24Z。其中 Qwen Code v0.27.4、langchain-mistralai 1.2.0 与 browser-use 1.0.6 为正式发布，llama.cpp b12406 为预发布。070期已经记录过 Qwen Code 夜间标签，以及 browser-use 1.0.5、一次 llama.cpp 构建和 LiteLLM 长期支持条目；本期使用其后或不同的标签，不重复那些网址。数字与行为描述均来自发布说明，本刊未独立复跑。我们的编辑判断是：把正式发布里的默认模型改价、较晚的正式编程代理标签、尚未测试的真实检查点转换说明，以及合作包的网关改动分开，再放到自己的任务上核对。",
+  "noteEn": "We searched the 24-hour window from November 15, 09:55 to November 16, 09:55 Beijing time and selected four previously unused open-source updates with verifiable publication timestamps. Issue 070 already covered through 09:55 on November 15, so items at or before that moment stay outside this window, as do items after 09:55 on November 16. The Qwen Code, llama.cpp, langchain-mistralai and browser-use items use published_at from the GitHub release records: 2026-11-15T07:04:40Z, 2026-11-15T09:27:48Z, 2026-11-15T22:38:03Z and 2026-11-16T00:51:24Z. Qwen Code v0.27.4, langchain-mistralai 1.2.0 and browser-use 1.0.6 are regular releases; llama.cpp b12406 is a pre-release. Issue 070 already covered a Qwen Code nightly and a browser-use 1.0.5 release, a llama.cpp build, and a LiteLLM long-term-support item; this issue uses later or different tags and does not reuse those URLs. Numbers and behavior claims come from the release notes and were not independently rerun by TUJL. Our editorial view: keep a formal default-model price change, a later formal coding-agent tag, an untested-conversion caveat, and a partner-package gateway change apart, then check them on your own tasks.",
+  "stories": [
+    {
+      "index": "01",
+      "label": "编程代理 / Coding agent",
+      "source": "Qwen Code · GitHub Release",
+      "date": "2026.11.15 15:04:40 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-15T07:04:40Z",
+      "zhTitle": "Qwen Code 正式发布 v0.27.4，纳入托管会话以及飞书与企业微信投递",
+      "enTitle": "Qwen Code v0.27.4 formally ships managed sessions plus Feishu and WeCom delivery",
+      "zh": "Qwen Code 正式发布 v0.27.4。发布说明把变更范围写成 v0.27.3...v0.27.4，并写明“No known breaking changes.”。要点包括：托管代理会话可以访问已授权的本地目录，并打开交互式 Managed Web Terminal，且不持久保存凭据或路径；输出可以发到飞书与企业微信的 webhook，较长的托管频道回复按有序分段投递，而不是被截断。Auto Mode 对有风险的操作要求明确授权，会复核分类器超时，避免对 HTTP(S) URL 做文件系统查找，并显式标出 Full Access。Web Shell Goals 可以合并受信任工作区的目标、显示工作区标记，并在创建目标时指向选定的工作区。记忆管理恢复了 CLI 的 /memory 控件，工作区设置会在重启后保留，并提供带类型的 SDK API，用来预览、提交、查看、取消和重试 Codex 记忆导入。在没有原生 UUID 支持时，终端标签、网页预览、本地命令和斜杠命令仍可在普通 HTTP 上工作。依赖修复的条目写明涉及 MCP、DOMPurify 与压缩请求解析，以及 qs、fast-uri、Hono 及相关依赖树，本刊未核对通告编号。070期已经记录过夜间预发布标签 v0.27.2-nightly.20261113.6f754be654，其中有托管会话与飞书投递等重叠主题；本条记录的是其后的正式标签 v0.27.4，并不把每条要点都当成首次出现在此标签。功能范围来自该正式版的发布说明，本刊未安装或运行这一构建。GitHub published_at 为 2026-11-15T07:04:40Z。",
+      "en": "Qwen Code formally released v0.27.4. The notes state the changelog range as v0.27.3...v0.27.4 and say “No known breaking changes.” Highlights: managed agent sessions can access granted local directories and open an interactive Managed Web Terminal without persisting credentials or paths; outputs can be sent to Feishu and WeCom webhooks, with long managed-channel replies delivered as ordered segments instead of being truncated. Auto Mode requires explicit authorization for risky actions, reviews classifier timeouts, avoids HTTP(S) URL filesystem lookups, and visibly marks Full Access. Web Shell Goals can merge goals from trusted workspaces, show workspace badges, and target a selected workspace when creating goals. Memory management restores the CLI /memory controls, keeps workspace settings across restarts, and adds typed SDK APIs to preview, submit, inspect, cancel, and retry Codex memory imports. Terminal tabs, web previews, local commands, and slash commands keep working over plain HTTP when native UUID support is unavailable. Dependency-fix notes name MCP, DOMPurify and compressed-request parsing, plus qs, fast-uri, Hono and related trees; TUJL did not check advisory identifiers. Issue 070 already recorded the nightly pre-release v0.27.2-nightly.20261113.6f754be654, which overlaps on themes such as managed sessions and Feishu delivery; this item records the later formal tag v0.27.4 and does not treat every highlight as first appearing in this tag. This scope comes from the formal release notes, and TUJL has not installed or run the build. GitHub published_at is 2026-11-15T07:04:40Z.",
+      "href": "https://github.com/QwenLM/qwen-code/releases/tag/v0.27.4"
+    },
+    {
+      "index": "02",
+      "label": "本地推理 / Local inference",
+      "source": "llama.cpp · GitHub Release",
+      "date": "2026.11.15 17:27:48 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-15T09:27:48Z",
+      "zhTitle": "llama.cpp 预发布 b12406 加入 Inkling 2 的文本与视觉支持",
+      "enTitle": "llama.cpp pre-release b12406 adds Inkling 2 text and vision support",
+      "zh": "ggml-org 发布 llama.cpp 预发布构建 b12406，位于 v1.0.0 之后。发布说明就是合并的 PR“feat: add Inkling 2 support (text + vision) (#32217)”。其中包括 Inkling2 的文本 GGUF 转换与文本推理、测试、视觉 mmproj 支持、静止图像编码器，以及带折叠偏置和 sinks 的 flash attention，并要求具备 Inkling2 的 hparams 与 inkling2 预分词器。转换说明写明：打包的专家按行分块反量化；逐层使用 NVFP4 与 MXFP8；每个专家经 LazyChunkedTensor 流过 128 行。真实的 w13（384x4608x4608）需要 2.25 MiB 的 F32 分块，而不是展开后 30.375 GiB 的整层。真实形状的稀疏探测在 Python/NumPy 分块分配上的峰值低于 5.8 MiB，另加 5.2 MiB 的回调元数据；每个投影的预算约为 16 MiB，含映射页，不含运行时、其他张量与操作系统缓存。全模型分块元数据大约 370 MiB。打包的合成 GGUF 权重与独立、已固定的 vLLM 解码逐位一致。CPU 预填充与解码的 logits 绝对误差在 3.1e-6 以内，argmax 一致率为 100%。说明明确写着：“Real checkpoint conversion remains untested.” 其后的提交限制了 Inkling2 的图像尺寸，并去掉视频帧平均；提交记录里先有“add audio support”，随后是“rm audio”，因此本条不声称支持音频。上述内存与误差数字来自发布说明，本刊未复跑。GitHub published_at 为 2026-11-15T09:27:48Z。",
+      "en": "ggml-org published llama.cpp pre-release build b12406, after v1.0.0. The notes are the merged PR “feat: add Inkling 2 support (text + vision) (#32217)”. They include Inkling2 text GGUF conversion and text inference, tests, vision mmproj support, a still-image encoder, and flash attention with folded bias and sinks, and they require Inkling2 hparams plus an inkling2 pre-tokenizer. On conversion, packed experts are dequantized in row chunks, with per-layer NVFP4 and MXFP8; 128 rows per expert go through LazyChunkedTensor. A real w13 (384x4608x4608) needs a 2.25 MiB F32 chunk instead of a 30.375 GiB expanded layer. Real-shaped sparse probes peak below 5.8 MiB of Python/NumPy chunk allocations, plus 5.2 MiB of callback metadata; the budget is about 16 MiB per projection, including mapped pages and excluding runtime, other tensors and the OS cache. Full-model chunk metadata is roughly 370 MiB. Packed synthetic GGUF weights match the independent pinned vLLM decode bit-for-bit. CPU prefill and decode logits stay within 3.1e-6 absolute error, with 100% argmax agreement. The notes explicitly say: “Real checkpoint conversion remains untested.” Later commits cap Inkling2 image size and drop video frame averaging. The commit list includes “add audio support” followed by “rm audio”, so this item does not claim audio support. These memory and error figures come from the release notes and were not rerun by TUJL. GitHub published_at is 2026-11-15T09:27:48Z.",
+      "href": "https://github.com/ggml-org/llama.cpp/releases/tag/b12406"
+    },
+    {
+      "index": "03",
+      "label": "应用框架 / App framework",
+      "source": "LangChain · GitHub Release",
+      "date": "2026.11.16 06:38:03 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-15T22:38:03Z",
+      "zhTitle": "langchain-mistralai 1.2.0 经 LangSmith 网关路由，并修复推理模型流式行为",
+      "enTitle": "langchain-mistralai 1.2.0 routes through the LangSmith gateway and fixes reasoning-model streaming",
+      "zh": "langchain-mistralai 1.2.0 为正式发布，说明标题是“Changes since langchain-mistralai==1.1.6”。点名的产品变更包括：fix(mistralai): fix streaming behavior for reasoning models（#41887）；feat(mistralai): route ChatMistralAI through LangSmith gateway（#41840）；feat(partners): Remove EOL'd Python 3.10 from partner packages（#41268）。同页还有依赖升级，以及反复刷新模型配置的杂务提交；本条不把这些杂务写成产品行为，也未核对通告编号。上述范围来自这一标签的发布说明，本刊未独立验证推理模型的流式行为、经 LangSmith 网关的路由，或 Python 3.10 的移除。GitHub published_at 为 2026-11-15T22:38:03Z。",
+      "en": "langchain-mistralai 1.2.0 is a regular release. The notes are titled “Changes since langchain-mistralai==1.1.6”. Named product changes include fix(mistralai): fix streaming behavior for reasoning models (#41887), feat(mistralai): route ChatMistralAI through LangSmith gateway (#41840), and feat(partners): Remove EOL'd Python 3.10 from partner packages (#41268). The same page also lists dependency bumps and repeated model-profile refresh chores; this item does not turn those chores into product claims, and TUJL did not check advisory identifiers. This scope comes from that tag's release notes. TUJL has not independently verified reasoning-model streaming, routing through the LangSmith gateway, or the removal of Python 3.10. GitHub published_at is 2026-11-15T22:38:03Z.",
+      "href": "https://github.com/langchain-ai/langchain/releases/tag/langchain-mistralai%3D%3D1.2.0"
+    },
+    {
+      "index": "04",
+      "label": "浏览器代理 / Browser agent",
+      "source": "browser-use · GitHub Release",
+      "date": "2026.11.16 08:51:24 · 北京时间 / UTC+8",
+      "publishedAt": "2026-11-16T00:51:24Z",
+      "zhTitle": "browser-use 1.0.6 将默认模型改为 BU 4.0，并写明费用上升",
+      "enTitle": "browser-use 1.0.6 makes BU 4.0 the default model and states the higher cost",
+      "zh": "browser-use 1.0.6 为正式发布，安装行是 pip install 'browser-use==1.0.6'。发布说明写明，BU 4.0 现在是默认模型：Agent(task) 与 ChatBrowserUse() 在 Browser Use 网关上运行 bu-4.0，而不再是 bu-fast（#6430）。简单任务若要最低费用，传入 llm='bu-4.0-mini'；最难的任务传入 llm='bu-4.0-pro'。说明警告，调用方若不传入 llm，费用会更高。BU 4.0 的 token 价格是 bu-fast 的 15 倍：每百万输入 / 输出 token 为 1.80 美元 / 9.00 美元，对照 0.12 美元 / 0.60 美元；默认模式以 high 而不是 medium 的推理运行。一次短测试任务花费 0.022 美元，而不是 0.0014 美元。若要保持先前的模型与价格，传入 llm='bu-fast'。说明给出价格链接 https://docs.browser-use.com/open-source/models，本刊未把该页当作第二条一手来源核对。没有密钥时，首次运行会打开 Browser Use 登录，批准后继续；云浏览器会打印其实时查看链接（#6425）。判分得到的 gotchas 保持在该次运行实际观察到的范围内（#6418）。上述价格与测试任务费用来自发布说明，本刊未复跑，也未另行核价。GitHub published_at 为 2026-11-16T00:51:24Z。",
+      "en": "browser-use 1.0.6 is a regular release. The install line is pip install 'browser-use==1.0.6'. The notes say BU 4.0 is now the default model: Agent(task) and ChatBrowserUse() run bu-4.0 on the Browser Use gateway instead of bu-fast (#6430). For simple tasks at the lowest cost, pass llm='bu-4.0-mini'; for the hardest tasks, pass llm='bu-4.0-pro'. The notes warn that this costs more if the caller passes no llm. BU 4.0 tokens cost 15 times as much as bu-fast: $1.80 / $9.00 per 1M input / output tokens, against $0.12 / $0.60. It runs at high instead of medium reasoning in the default mode. A short test task cost $0.022 instead of $0.0014. To keep the previous model and price, pass llm='bu-fast'. The notes give a prices link, https://docs.browser-use.com/open-source/models; TUJL did not audit that page as a second primary source. The first run without a key opens Browser Use login and continues after approval; cloud browsers print their live-view link (#6425). Judge gotchas stay grounded in what the run observed (#6418). These prices and the test-task cost come from the release notes. TUJL did not rerun the task or price-check the figures. GitHub published_at is 2026-11-16T00:51:24Z.",
+      "href": "https://github.com/browser-use/browser-use/releases/tag/1.0.6"
+    }
+  ]
+};
+
 export const issue070: Issue = {
   "number": "070",
   "date": "2026-11-15",
