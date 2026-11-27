@@ -1,9 +1,9 @@
 import { IssuePage } from "./issue-page";
-import { issue081 } from "./issues";
+import { issue082 } from "./issues";
 import { issueMetadata } from "./issue-metadata";
 
-export const metadata = issueMetadata(issue081);
+export const metadata = issueMetadata(issue082);
 
 export default function Home() {
-  return <IssuePage issue={issue081} />;
+  return <IssuePage issue={issue082} />;
 }
