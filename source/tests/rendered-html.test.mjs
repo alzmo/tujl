@@ -10,9 +10,9 @@ async function render(path = "/") {
 }
 
 test("all editions render with bilingual content, record metadata and promotion", async () => {
-  for (let n = 1; n <= 82; n++) {
+  for (let n = 1; n <= 83; n++) {
     const number = String(n).padStart(3, "0");
-    const response = await render(n === 82 ? "/" : "/issues/" + number);
+    const response = await render(n === 83 ? "/" : "/issues/" + number);
     assert.equal(response.status, 200);
     const html = await response.text();
     assert.match(html, new RegExp("<title>TUJL " + number));
@@ -36,12 +36,12 @@ test("private-memory handlers retain authentication checks", async () => {
 
 test("latest edition has four distinct primary-source entries and complete archive links", async () => {
   const html = await (await render()).text();
-  assert.match(html, /2026-11-27/);
+  assert.match(html, /2026-11-28/);
   assert.equal((html.match(/class="story"/g) ?? []).length, 4);
   const sources = [...html.matchAll(/class="source-link" href="([^"]+)"/g)].map((m) => m[1]);
   assert.equal(new Set(sources).size, 4);
   assert.ok(sources.every((url) => url.startsWith("https://")));
-  for (let n = 1; n < 82; n++) {
+  for (let n = 1; n < 83; n++) {
     assert.ok(html.includes('href="/issues/' + String(n).padStart(3, "0") + '"'));
   }
   assert.match(html, /aria-labelledby="briefing-title"/);
@@ -75,9 +75,9 @@ test("desktop content reserves a clear lane for the fixed promotion", async () =
 });
 
 test("new edition preserves yesterday and avoids repeated sources", async () => {
-  const previous = await (await render("/issues/081")).text();
-  assert.match(previous, /2026-11-26/);
-  assert.match(previous, /v0\.13\.5/);
+  const previous = await (await render("/issues/082")).text();
+  assert.match(previous, /2026-11-27/);
+  assert.match(previous, /v1\.1\.0/);
   const current = await (await render()).text();
   const links = (html) => [...html.matchAll(/class="source-link" href="([^"]+)"/g)].map((m) => m[1]);
   assert.ok(links(current).every((url) => !links(previous).includes(url)));
@@ -100,10 +100,10 @@ test("small metadata has readable contrast and mobile promotion stays labelled",
 
 test("latest edition distinguishes official reports, date boundaries and editorial judgment", async () => {
   const html = await (await render()).text();
-  assert.match(html, /11月26日09:55/);
   assert.match(html, /11月27日09:55/);
+  assert.match(html, /11月28日09:55/);
   assert.match(html, /Our editorial view/);
-  for (const term of ["v1.1.0", "DFlash2", "v0.28.7", "v2.76.0"]) {
+  for (const term of ["v2.6.0", "KVAE-3.0", "v1.108.20", "v2.77.0"]) {
     assert.ok(html.includes(term), term);
   }
 });
@@ -117,20 +117,20 @@ test("latest briefing remains focused on technical and research topics", async (
 
 test("latest source timestamps fit the edition window and all source URLs are new", async () => {
   const source = await readFile(new URL("../app/issues.ts", import.meta.url), "utf8");
-  const match = source.match(/export const issue082: Issue = ([\s\S]+?);\n\n/);
+  const match = source.match(/export const issue083: Issue = ([\s\S]+?);\n\n/);
   assert.ok(match);
   const issue = JSON.parse(match[1]);
   const start = Date.parse(issue.windowStart), end = Date.parse(issue.windowEnd);
-  assert.equal(issue.windowStart, "2026-11-26T01:55:00Z");
-  assert.equal(issue.windowEnd, "2026-11-27T01:55:00Z");
+  assert.equal(issue.windowStart, "2026-11-27T01:55:00Z");
+  assert.equal(issue.windowEnd, "2026-11-28T01:55:00Z");
   assert.ok(end > start);
   assert.equal(end - start, 24 * 60 * 60 * 1000);
-  const historical = source.slice(source.indexOf("export const issue081: Issue ="));
+  const historical = source.slice(source.indexOf("export const issue082: Issue ="));
   for (const story of issue.stories) {
     assert.ok(story.publishedAt, story.href);
     const published = Date.parse(story.publishedAt);
     assert.ok(published > start && published <= end, story.href);
     assert.ok(!historical.includes(story.href), story.href);
   }
-  assert.equal((source.match(/export const issue\d{3}: Issue =/g) ?? []).length, 82);
+  assert.equal((source.match(/export const issue\d{3}: Issue =/g) ?? []).length, 83);
 });
